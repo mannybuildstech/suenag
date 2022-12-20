@@ -1,44 +1,29 @@
 <form>
     <style>
-        body {
-            border-radius: 8px;
+        body{
             font-family: "inconsolata";
-            color: #524845;
-            font-size: 36px;
         }
+
         form {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         grid-template-rows: auto;
         width: 100%;
         row-gap: 1rem;
         justify-content: center;
         align-content: center;
-        }
+        font-size: 24px;
+        font-family: "inconsolata";
         
-        #idFormatoSection {
-        grid-column: 1;
-        grid-row: 1;
         }
-        
-        #idToWhoSection {
-        grid-column: 2;
-        grid-row: 1;
-        }
-        
-        #idRelationshipSection {
-        grid-column: 1;
-        grid-row: 2;
-        }
-    
-        #idVibraSection {
-        grid-column: 2;
-        grid-row:2;
+
+        #responseContainer {
+            display: none;
         }
 
         #inputParagraph{
             display: grid;
-            grid-template-columns: 2fr 2fr;
+            grid-template-columns: 1fr;
             grid-template-rows: auto;
             width: 100%;
             row-gap: 1rem;
@@ -48,81 +33,143 @@
             font-family: "inconsolata";
             border-radius: 8px;
             color: #524845;
-            font-size: 36px; 
+            font-size: 24px;            
         }
+        #idFormatolabel {
+        font-family: "inconsolata";
+        grid-column: 1;
+        grid-row: 1;   
+        }
+
+        #idFormatoSection {
+        font-family: "inconsolata";
+        grid-column: 1;
+        grid-row: 2;   
+        }
+        
+        #vibraLabel {
+        font-family: "inconsolata";
+        grid-column: 1;
+        grid-row:3;      
+        }
+
+        #idVibra {
+        font-family: "inconsolata";
+        grid-column: 1;
+        grid-row:4;
+        }
+
+        #relacionLabel{
+        font-family: "inconsolata";
+        grid-column: 1;
+        grid-row:5;
+        }
+
+        #idRelationshipSection {
+        grid-column: 1;
+        grid-row: 6;
+        }
+
+        #llamadoLabel {
+        font-family: "inconsolata";
+        grid-column: 1;
+        grid-row:7;
+        }
+
+        #idLlamadoSection {
+        grid-column: 1;
+        grid-row:8;
+        font-family: "inconsolata";
+        }
+
+     
 
         #idQueDecir {
         grid-column:1 span 2;
         grid-row: 1;
+        font-family: "inconsolata"
         }
         
         #inputTextArea {
         grid-column:1 span 2;
         grid-row:2;
         font-family: "inconsolata";
-        font-size: 36px;
+        font-size: 24px;
+        border-color: blueviolet;
         }
 
         #idDestinatario {
             border-radius:8px;
             color: #524845;
             font-family: "inconsolata";
-            font-size: 36px;
+            font-size: 24px;
             vertical-align: middle;
+            border-color:blueviolet
         }
     
         select{
         font-family: "inconsolata";
         border-radius: 8px;
-        font-size: 36px;
+        font-size: 24px;
         color: #524845;
+        text-align: center;
+        height: 3rem;
+        border-color: blueviolet;
         }
+        
 
         option{
         font-family: "inconsolata";
-        font-size: 36px;
+        font-size: 24px;
         color: #524845;
         height: 1rem;
+        text-align: center;
+        height: 3rem;
         }
+
     </style>
     
+    <label id="formatoLabel">Escribele un </label>
     <div id="idFormatoSection">
-        <label id="formatoLabel">Escribele un </label>
         <select name="formato" id="idFormato">
-            <option value="texto">texto 📱</option>
+            <option value="text">texto 📱</option>
             <option value="email">email 📧</option>
-            <option value="carta">carta 📬</option>
-            <option value="imagen">poema ✍️</option>
-        </select>    
-        <label id="vibraLabel">con tono </label>
-        <select name="vibra" id="idVibra">
-            <option value="amigable">casual🤗</option>
-            <option value="profesional">profesional💼</option>
-            <option value="urgente">urgente🚨</option>
-            <option value="agresivo">agresivo🤬</option>
-            <option value="gracioso">gracioso😂</option>
-            <option value="romantico">romantico💑</option>
-        </select>    
+            <option value="letter">carta 📬</option>
+            <option value="poem">poema ✍️</option>
+        </select>       
     </div>
-    <div id="idToWhoSection">
-     </div>
-        
+    <label id="vibraLabel"> con tono </label>
+    <select name="vibra" id="idVibra" rows="1">
+        <option value="friendly">casual🤗</option>
+        <option value="profesional">profesional💼</option>
+        <option value="urgent">urgente🚨</option>
+        <option value="aggresive">agresivo🤬</option>
+        <option value="funny">gracioso😂</option>
+        <option value="romantic">romantico💑</option>
+    </select>
+    <label id="relacionLabel">dirigido a mi </label>
+         
     <div id="idRelationshipSection">
-        <label id="relacionLabel">A mi </label>
-        <select name="relacion" id="idRelacion">
-            <option value="estudiante">estudiante👨🎓 </option>
-            <option value="profesor">profesor👩🏫 </option>
-            <option value="jefe">jefe👨💼</option>
-            <option value="empleado">empleado👷</option>
-            <option value="cliente">cliente🤝</option>
-            <option value="amigo">amigo🤗</option>
-            <option value="interes amoroso">interes amoroso💑</option>
-        </select>
-        <label id="aLabel"> llamado: </label>
-        <textarea rows="1" id="idDestinatario" name="RecipientName" placeholder="Fulano de tal"></textarea> 
+        <select name="relacion" id="idRelacion" rows="1">
+            <option value="student">alumno🎓</option>
+            <option value="professor">🏫profe</option>
+            <option value="boss">💼jefe</option>
+            <option value="employee">👷empleado</option>
+            <option value="client">🤝cliente</option>
+            <option value="friend">🤗amigo</option>
+            <option value="love interest">💑amor</option>
+        </select> 
     </div>
+
     
+    <label id="llamadoLabel">llamado: </label>
+    <div id="idLlamadoSection">
+        <textarea rows="1" id="idDestinatario" name="RecipientName" placeholder="Fulano de tal"></textarea>
+    </div>
+
     </form>
+    <br/>
+    <br/>
     <p id="inputParagraph">
         <label id="idQueDecir">Que le quieres decir?</label>
         <textarea rows="5" id="inputTextArea" name="inputTextArea" placeholder="Danos una breve descripcion de lo que le quieres decir, y la inteligencia artificial se encargara del resto :)"></textarea>
