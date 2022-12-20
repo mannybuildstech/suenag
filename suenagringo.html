@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <style>
+        select {
+            border-radius: 10px;
+            height: 25px;
+            overflow: auto;
+        }
+
+        option {
+            height: 30px;
+        }
+
+        textarea {
+            border-radius: 8px;
+            min-height: 20px;
+        }
+
+        label {
+            line-height:1.5;
+        }
+
+
+    </style>
+<form>
+    <p>
+        <label>Escribele un </label>
+        <select name="formato" id="idFormato">
+            <option value="texto">Texto 📱</option>
+            <option value="email">Email 📧</option>
+            <option value="carta">Carta 📬</option>
+            <option value="imagen">Poema ✍️</option>
+        </select>
+        <label> a </label>
+        <textarea style="line-height:1.5;vertical-align:middle" rows="1" cols="10" id="idDestinatario" name="SendTo" rows="1" cols="25">Fulano(a)</textarea>
+        <br>
+    </p>
+    <p>
+        <label>Que es mi </label>
+        <select name="relacion" id="idRelacion">
+            <option value="estudiante">Estudiante 👨‍🎓 </option>
+            <option value="profesor">Profesor 👩‍🏫 </option>
+            <option value="jefe">Jefe 👨‍💼</option>
+            <option value="empleado">Empleado 👷‍♀️</option>
+            <option value="cliente">Cliente 🤝</option>
+            <option value="amigo">Amigo 🤗</option>
+            <option value="interes amoroso">Interes amoroso 💑</option>  
+        </select> 
+        <label>con un tono </label>
+        <select name="vibra" id="idVibra">
+            <option value="amigable">Casual 🤗</option>
+            <option value="profesional">Profesional 👨‍💼</option>
+            <option value="urgente">Urgente 🚨</option>
+            <option value="agresivo">Agresivo 🤬</option>
+            <option value="gracioso">Gracioso 😂</option>
+            <option value="romantico">Romantico 💑</option>
+        </select>   
+    </p>
+    <p><label>Que le quieres decir?</label></p>
+    <textarea id="inputTextArea" name="inputTextArea" rows="4" cols="50"></textarea>
+    <br>
+</form>
+</body>
+</html>
