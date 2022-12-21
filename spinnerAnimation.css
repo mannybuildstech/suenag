@@ -1,0 +1,22 @@
+<div id="spinner"></div>
+
+<style>
+#spinner {
+width: 80px;
+height: 80px;
+background-color: #BA1ED2;
+margin: auto;
+border-radius: 100%;
+-webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+0% { -webkit-transform: scale(0) }
+100% {
+-webkit-transform: scale(1.0);
+opacity: .3;
+background-color: #FC7E58AD;
+}
+}
+</style>
