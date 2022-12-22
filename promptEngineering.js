@@ -1,5 +1,14 @@
 <script>
 
+var loadingText = "Generando sugerencias...";
+
+function goBack()
+{
+history.back();
+document.getElementById("spinner").style.display = "block";
+document.getElementById("output").innerHTML = loadingText;
+}
+
 function copy()
 {
 var result = document.getElementById("output").innerHTML;
@@ -67,13 +76,23 @@ console.log(data);
 
 spanishResult = data;
 document.getElementById("flipButton").style.opacity = '1'
+
+//hide loading spinner only after everything is ready!
+document.getElementById("spinner").style.display = "none";
 }
 
 async function callGPT()
 {
 console.log("STart of callGPT")
+
+//setup UI - hide result buttons
 document.getElementById("flipButton").style.opacity = '0'
 document.getElementById("resultActions").style.opacity = '0'
+
+//setup UI - show loading spinner
+document.getElementById("spinner").style.display = "block";
+document.getElementById("output").innerHTML = loadingText;
+
 document.getElementById("responseContainer").style.display = "block";
 var tone = document.getElementById("idVibra").value;
 var format = document.getElementById("idFormato").value;
@@ -82,8 +101,8 @@ recipient = document.getElementById("idDestinatario").value;
 var relationship = document.getElementById("idRelacion").value;
 
 //Give GPT the instructions
-inputPrompt= "Recipient: " + recipient + "\nRelationship: " + relationship + "\n";
-inputPrompt= " Create a " + tone + " " + format + " in ENGLISH addressed to "+ recipient +" based on the following INPUT text.";
+inputPrompt="Context: You are an AI designed to help rewrite INPUT text from SPANISH into ENGLISH. You never respond in SPANISH, always in ENGLISH.\n"
+inputPrompt+= "Instructions: Create a " + tone + " " + format + " in ENGLISH addressed to my" + relationship + " " + recipient +" based on the following INPUT text.";
 
 //Give GPT the input text
 inputPrompt+="\nINPUT:\n" + document.getElementById("inputTextArea").value;
@@ -126,7 +145,6 @@ console.log(data);
 var element = document.getElementById("output");
 element.innerHTML = data;
 
-document.getElementById("spinner").style.display = "none";
 document.getElementById("resultActions").style.opacity = '1'
 
 displayIsEnglish = true;
