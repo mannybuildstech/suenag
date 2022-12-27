@@ -1,12 +1,24 @@
 <script>
 
-var loadingText = "Generando sugerencias...";
+var spanishResult;
+var englishResult;
+
+var displayIsEnglish;
+
+var tone = "formal";
+var format = "text";
+var relationship = "friend";
+
+function loadingText()
+{
+    //allow editing response!?
+    var txt = "Generando " + format + " con tono " + tone + "..."; 
+    return txt;
+}
 
 function goBack()
 {
-history.back();
-document.getElementById("spinner").style.display = "block";
-document.getElementById("output").innerHTML = loadingText;
+    history.back()
 }
 
 function copy()
@@ -36,13 +48,11 @@ document.getElementById("output").innerHTML = englishResult;
 displayIsEnglish = !displayIsEnglish;
 }
 
-var spanishResult;
-var englishResult;
-var displayIsEnglish;
+
 
 async function translateGPT(englishResult)
 {
-console.log("Start of translateGPT");
+console.log("******  translateGPT *********");
 var inputPrompt ="You are a language translator. Translate the following INPUT to SPANISH\nINPUT:\n" + englishResult;
 inputPrompt+="\n\nOUTPUT:\n";
 
@@ -50,9 +60,6 @@ console.log('sending prompt:')
 console.log("'" + inputPrompt + "'")
 
 jsonPrompt = JSON.stringify({ prompt: inputPrompt });
-
-console.log('in JSON:')
-console.log(jsonPrompt)
 
 const options =
 {
@@ -70,39 +77,74 @@ const message = `An error has occured: ${response.status}`;
 throw new Error(message);
 }
 
-const data = await response.text();
+spanishResult = await response.text();
 console.log("server response: ");
-console.log(data);
+console.log(spanishResult);
 
-spanishResult = data;
-document.getElementById("flipButton").style.opacity = '1'
-
-//hide loading spinner only after everything is ready!
-document.getElementById("spinner").style.display = "none";
+console.log("********** end translate GPT ************")
+SetEndState();
 }
 
-async function callGPT()
+function SetEndState()
 {
-console.log("STart of callGPT")
+    
+//hide loading spinner only after everything is ready!
+document.getElementById("spinner").style.display = "none";
 
+//Display resuult
+var element = document.getElementById("output");
+element.innerHTML = englishResult;
+
+//Show result buttons!
+document.getElementById("doneMenu").style.opacity = "1";
+document.getElementById("resultActions").style.opacity = '1'
+
+copy();
+}
+
+function SetLoadingState()
+{
 //setup UI - hide result buttons
-document.getElementById("flipButton").style.opacity = '0'
+document.getElementById("doneMenu").style.opacity = '0'
 document.getElementById("resultActions").style.opacity = '0'
 
 //setup UI - show loading spinner
 document.getElementById("spinner").style.display = "block";
-document.getElementById("output").innerHTML = loadingText;
+document.getElementById("output").innerHTML = loadingText();
 
-document.getElementById("responseContainer").style.display = "block";
-var tone = document.getElementById("idVibra").value;
-var format = document.getElementById("idFormato").value;
-var recipient = "[recipient]]"
-recipient = document.getElementById("idDestinatario").value;
-var relationship = document.getElementById("idRelacion").value;
+}
+
+function loadInputValues()
+{
+    toneOption = document.getElementById("idVibra");
+    if (toneOption)
+    {
+        tone = toneOption.value;
+    }
+
+    formatOption = document.getElementById("idFormatoSection");
+    if (formatOption)
+    {
+        format = formatOption.value;
+    }
+
+    relationshipOption = document.getElementById("idRelationshipSection").value;
+    if (relationshipOption)
+    {
+        relationship = relationshipOption.value;
+    }
+}
+
+async function callGPT()
+{
+SetLoadingState();
+loadInputValues();
+
+console.log("*********  Start of callGPT ********* ")
 
 //Give GPT the instructions
 inputPrompt="Context: You are an AI designed to help rewrite INPUT text from SPANISH into ENGLISH. You never respond in SPANISH, always in ENGLISH.\n"
-inputPrompt+= "Instructions: Create a " + tone + " " + format + " in ENGLISH addressed to my" + relationship + " " + recipient +" based on the following INPUT text.";
+inputPrompt+= "Instructions: Create a " + tone + " " + format + " in ENGLISH addressed to my " + relationship + " based on the following INPUT text.";
 
 //Give GPT the input text
 inputPrompt+="\nINPUT:\n" + document.getElementById("inputTextArea").value;
@@ -112,11 +154,7 @@ inputPrompt+="\n\nOUTPUT:\n";
 
 console.log('sending prompt:')
 console.log("'" + inputPrompt + "'")
-
 jsonPrompt = JSON.stringify({ prompt: inputPrompt });
-
-console.log('in JSON:')
-console.log(jsonPrompt)
 
 const options =
 {
@@ -134,20 +172,13 @@ const message = `An error has occured: ${response.status}`;
 throw new Error(message);
 }
 
-const data = await response.text();
-
-console.log("finished generating english text");
-
-translateGPT(data);
+englishResult = await response.text();
 console.log("server response: ");
-console.log(data);
-
-var element = document.getElementById("output");
-element.innerHTML = data;
-
-document.getElementById("resultActions").style.opacity = '1'
+console.log(englishResult);
 
 displayIsEnglish = true;
-englishResult = data;
+console.log("********* finished generating english text ********* ");
+
+translateGPT(englishResult);
 }
 </script>
