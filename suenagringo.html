@@ -1,4 +1,7 @@
-<form>
+<span id="freePlan" data-ms-show="plan(qqoioj3cqf)" style="opacity:0;">free</span>
+  <span id="basicPlan" data-ms-show="plan(gyjzbuabgg)" style="opacity:0;">basic</span>
+  <span id="ultraPlan" data-ms-show="plan(fszhok0aa5)" style="opacity:0;">ultra</span>
+<form id="myForm">
     <style>
 
     .parent{
@@ -22,14 +25,12 @@
         grid-template-rows: auto;
         row-gap: 5%;
         column-gap: 5%;
-        width: 95%;
+        width: 100%;
         text-align: center;
         margin: auto;
     }
 
     #inputTextArea{     
-    grid-row: 1; 
-    grid-column: 1 span 3;
     font-family: "inconsolata";
     border-radius: 8px;
     font-size: 24px;
@@ -61,7 +62,7 @@
     text-align: center;    
     }
 
-    #idFormatoSection {
+    .idFormatoSection {
     grid-column: 1;
     grid-row: 1;
     margin:auto;
@@ -100,12 +101,14 @@
     height: 3rem;
     }
     </style>
-   
+    
     <textarea rows="15" id="inputTextArea" name="inputTextArea" placeholder="Que quieres decir? Ejemplo: Hola George, necesitamos que traigan el tractor este viernes."></textarea>
     <br/>
     <p id="idCustomSub">Dale personalidad 👇</p>
+    
     <div id="myGrid">
-        <select name="formato" id="idFormatoSection">
+        <!--------------------------------------------------------------- gratis -------------------------------------------->
+        <select name="formato" id="freeSelection" class="idFormatoSection" data-ms-show="plan(qqoioj3cqf)">
             <option hidden value="email">📧Formato✍️</option>
             <option value="text message">texto📱</option>
             <option value="email">email📧</option>
@@ -114,35 +117,98 @@
             <option value="catchy and persuasive ad">publicidad📰</option>
             <option value="slogan">eslogan🔖</option>
             <option value="blog post">articulo📖</option>
+            <option value="speech">discurso🎤</option>
+            <option value="outline">esquema📝</option>
+            <script>
+
+                document.getElementById('freeSelection').addEventListener("change", handleClickFree);
+
+                function handleClickFree()
+                {
+                    console.log("clicked FREE!")
+                    freePlan = true;
+                }
+            </script>
         </select>
+        <!--------------------------------------------------------------- basic -------------------------------------------->
+        <select name="formato" id="basicSelection" class="idFormatoSection" data-ms-show="plan(gyjzbuabgg)">
+            <option hidden value="email">📧Formato✍️</option>
+            <option value="text message">texto📱</option>
+            <option value="email">email📧</option>
+            <option value="short poem">poema✍️</option>
+            <option value="tweet">tweet🐦</option>
+            <option value="catchy and persuasive ad">publicidad📰</option>
+            <option value="slogan" disabled>eslogan🔖</option>
+            <option value="blog post" disabled>articulo📖</option>
+            <option value="speech" disabled>discurso🎤</option>
+            <option value="outline" disabled>esquema📝</option>
+            <script>
+                
+                document.getElementById('basicSelection').addEventListener("change", handleClickBasic);
+
+                function handleClickBasic()
+                {
+                    console.log("clicked BASIC!")
+                    basicPlan = true;
+                }
+            </script>
+        </select>
+        <!--------------------------------------------------------------- ultra -------------------------------------------->
+        
+        <select name="formato" id="ultraSelection" class="idFormatoSection" data-ms-show="plan(fszhok0aa5)"">
+            <option hidden value="email">📧Formato✍️</option>
+            <option value="text message">texto📱</option>
+            <option value="email">email📧</option>
+            <option value="short poem">poema✍️</option>
+            <option value="tweet">tweet🐦</option>
+            <option value="catchy and persuasive ad">publicidad📰</option>
+            <option value="slogan">eslogan🔖</option>
+            <option value="blog post">articulo📖</option>
+            <option value="speech">discurso🎤</option>
+            <option value="outline">esquema📝</option>
+            <script>
+                
+                document.getElementById('ultraSelection').addEventListener("change", handleClickFree);
+
+                function handleClickFree()
+                {
+                    console.log("clicked ULTRA!")
+                    ultraPlan = true;
+                }
+            </script>
+        </select>
+
+
         <select name="vibra" id="idVibra" rows="1">
             <option hidden value="formal">💼Tono😂</option>
+            <option value="formal">formal💼</option>
+            <option value="urgent">urgente🚨</option>
+            <option value="casual">casual🤗</option>
             <option value="hilarious">gracioso😂</option>
             <option value="emotional">emocional😭</option>
             <option value="romantic">romantico💑</option>
             <option value="sarcastic">sarcástico😏</option>
             <option value="defiant">desafiante👊</option>
-            <option value="casual">casual🤗</option>
-            <option value="formal">formal💼</option>
-            <option value="informative">informativo📰</option>
-            <option value="urgent">urgente🚨</option>
             <option value="inspirational">inspirador🙌</option>
+            <option value="informative">informativo📰</option>
             <option value="catchy">atrapante🎵</option>
         </select>
         <select name="relacion" id="idRelationshipSection" rows="1">
         <option hidden value="friend">👷Para quien?🤝</option>
-        <option value="boss">mi jefe💼</option>
-        <option value="employee">mi empleado👷</option>
-        <option value="colleague">mi colega👨‍💼</option>
-        <option value="client">mi cliente🤝</option>
-        <option value="student">mi alumno🎓</option>
-        <option value="professor">mi profe🏫</option>
-        <option value="friend">mi amigo🤗</option>
-        <option value="family">mi familia👨‍👩‍👧‍👦</option>
-        <option value="love interest">mi amor💑</option>
-        <option value="followers">mis seguidores🐦</option>
-        <option value="enemy">mi enemigo👊</option>
+        <option value="boss">jefe💼</option>
+        <option value="employee">empleado👷</option>
+        <option value="colleague">colega👨‍💼</option>
+        <option value="client">cliente🤝</option>
+        <option value="followers">seguidores🐦</option>
+        <option value="student">alumno🎓</option>
+        <option value="professor">profe🏫</option>
+        <option value="friend">amigo🤗</option>
+        <option value="enemy">enemigo👊</option> 
+        <option value="family">familia👨‍👩‍👧‍👦</option>
+        <option value="love interest">amor💑</option>
         </select>
+        <script>
+        </script>
     </div>
     
     </form>
