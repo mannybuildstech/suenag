@@ -10,16 +10,17 @@ function animateHeader()
     const element = document.getElementById('landingPageTitle');
 
     // Set the interval for the animation (in milliseconds)
-    const interval = 3000;
+    const interval = 2000;
 
     var i = 1
 
-    const titles = ["textea 📱", "Vende 📰", "Cierra 🤝", "Postea 🐦", "Enamora 💑"];
+    const titles = ["textea 📱", "crea flyers 📰", "postea 🐦", "manda 📧", "cierra 🤝", "enamora 💑"];
     
     //Execute every 3 seconds
     setInterval(function()
     {
         // Fade out the element
+        
         setTimeout(() => 
         {
             element.style.transition = 'opacity 1s ease-in'
@@ -40,6 +41,11 @@ function animateHeader()
             i=0
 
     }, interval);
+}
+
+function updateHeader()
+{
+    
 }
 
 </script>

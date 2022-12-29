@@ -18,20 +18,17 @@
 
     #myGrid{
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr;
         grid-template-rows: auto;
-        width: 100%;    
-        row-gap: 10%;  
+        row-gap: 5%;
         column-gap: 5%;
-    }
-
-    #idQueDecir{
-        grid-row: 2;
-        grid-column: 1;    
+        width: 80%;
+        text-align: center;
+        margin: auto;
     }
 
     #inputTextArea{     
-    grid-row: 3; 
+    grid-row: 1; 
     grid-column: 1 span 3;
     font-family: "inconsolata";
     border-radius: 8px;
@@ -45,33 +42,35 @@
 
 
     #idCustomize{
-        grid-row: 1;
-        grid-column: 1;
     }
 
     #idCustomSub{
-        grid-row: 2;
-        grid-column: 1;
-        font-weight: lighter;
-        font-size: 18px;
+        font-weight: normal;
+        font-size: 24px;
     }
-   
-    #idFormatoSection {
-    font-family: "inconsolata";
-    grid-column: 1;
-    grid-row: 3;
-    }
-    
-    #idVibra {
-    font-family: "inconsolata";
-    grid-column: 1;
-    grid-row:4;
-    }
-    
+ 
+       
     #idRelationshipSection {
     grid-column: 1;
-    grid-row: 5;
+    grid-row: 3;
+    margin:auto;
+    text-align: center;    
     }
+
+    #idFormatoSection {
+    grid-column: 1;
+    grid-row: 1;
+    margin:auto;
+    text-align: center;
+    }
+
+    #idVibra {
+    grid-column: 1;
+    grid-row: 2;
+    margin:auto;
+    text-align: center;    
+    }
+ 
         
     select{
     font-family: "inconsolata";
@@ -81,6 +80,10 @@
     text-align: center;
     height: 3rem;
     border-color: blueviolet;
+    min-width: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    
     }
 
     
@@ -93,25 +96,28 @@
     height: 3rem;
     }
     </style>
-    
-    <label id="idQueDecir">Que quieres que escribir?</label>
+   
+   
+    <div id="idCustomSub">Que quieres decir?</div>  
     <br/>
-    <textarea rows="5" id="inputTextArea" name="inputTextArea" placeholder="Ejemplo: Hola George, necesitamos que traigan el tractor este viernes."></textarea>
+    <textarea rows="10" id="inputTextArea" name="inputTextArea" placeholder="Ejemplo: Hola George, necesitamos que traigan el tractor este viernes."></textarea>
     <br/>
+    <br/>
+    <div id="idCustomSub">Personaliza el formato y estilo:</div>    
     <br/>
     <div id="myGrid">
-        <label id="idCustomize">Personalizacion</label>
-        <label id="idCustomSub">Ajusta el estilo del texto. Puedes generar emails/textos/poemas/etc. con tono gracioso😂, formal💼 y mucho mas!</label>
         <select name="formato" id="idFormatoSection">
             <option hidden value="email">Tipo de mensaje</option>
             <option value="text message">texto📱</option>
             <option value="email">email📧</option>
-            <option value="catchy and persuasive ad">publicidad📰</option>
-            <option value="tweet">tweet🐦</option>
             <option value="short poem">poema✍️</option>
+            <option value="tweet">tweet🐦</option>
+            <option value="catchy and persuasive ad">publicidad📰</option>
+            <option value="slogan">eslogan🔖</option>
+            <option value="blog post">articulo📖</option>
         </select>
         <select name="vibra" id="idVibra" rows="1">
-            <option hidden value="formal">Con que tono?</option>
+            <option hidden value="formal"> Con que tono? </option>
             <option value="formal">formal💼</option>
             <option value="casual">casual🤗</option>
             <option value="urgent">urgente🚨</option>
@@ -120,8 +126,9 @@
             <option value="sarcastic">sarcástico😏</option>
             <option value="defiant">desafiante👊</option>
         </select>
+        
         <select name="relacion" id="idRelationshipSection" rows="1">
-        <option hidden value="friend">Para quien?</option>
+        <option hidden value="friend"> Para quien? </option>
         <option value="employee">👷empleado</option>
         <option value="client">🤝cliente</option>
         <option value="boss">💼jefe</option>
