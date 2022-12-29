@@ -11,9 +11,8 @@ var format = "text";
 var relationship = "friend";
 
 window.onpopstate = function(event) {
-  SetLoadingState()
+SetLoadingState()
 };
-
 
 function goBack()
 {
@@ -103,7 +102,7 @@ document.getElementById("resultActions").style.opacity = '0'
 //setup UI - show loading spinner
 document.getElementById("spinner").style.display = "block";
 
-//output 
+//output
 document.getElementById("output").innerHTML = "Generando sugerencias...";
 }
 
@@ -136,48 +135,48 @@ console.log("relationship: " + relationship);
 
 async function callGPT()
 {
-    loadInputValues();
-    SetLoadingState();
+loadInputValues();
+SetLoadingState();
 
-    console.log("********* Start of callGPT ********* ")
+console.log("********* Start of callGPT ********* ")
 
-    //Give GPT the instructions
-    inputPrompt="Context: You are an AI designed to help rewrite INPUT text from SPANISH into ENGLISH. You never respond in SPANISH, always in ENGLISH.\n"
-    inputPrompt+= "Instructions: Create a " + tone + " " + format + " in ENGLISH addressed to my " + relationship + " based on the following INPUT text.";
+//Give GPT the instructions
+inputPrompt="Context: You are an AI designed to help rewrite INPUT text from SPANISH into ENGLISH. You never respond in SPANISH, always in ENGLISH.\n"
+inputPrompt+= "Instructions: Create a " + tone + " " + format + " in ENGLISH addressed to my " + relationship + " based on the following INPUT text.";
 
-    //Give GPT the input text
-    inputPrompt+="\nINPUT:\n" + document.getElementById("inputTextArea").value;
+//Give GPT the input text
+inputPrompt+="\nINPUT:\n" + document.getElementById("inputTextArea").value;
 
-    //Prompt it for the output text
-    inputPrompt+="\n\nOUTPUT:\n";
+//Prompt it for the output text
+inputPrompt+="\n\nOUTPUT:\n";
 
-    console.log('sending prompt:')
-    console.log("'" + inputPrompt + "'")
-    jsonPrompt = JSON.stringify({ prompt: inputPrompt });
+console.log('sending prompt:')
+console.log("'" + inputPrompt + "'")
+jsonPrompt = JSON.stringify({ prompt: inputPrompt });
 
-    const options =
-    {
-    method: 'POST',
-    body: jsonPrompt,
-    headers: {
-    'Content-Type': 'application/json'
-    }
-    }
+const options =
+{
+method: 'POST',
+body: jsonPrompt,
+headers: {
+'Content-Type': 'application/json'
+}
+}
 
-    const response = await fetch(`https://wrappedgpt1.azurewebsites.net/api/azurefunctiongpt?promptType=freeform`, options);
+const response = await fetch(`https://wrappedgpt1.azurewebsites.net/api/azurefunctiongpt?promptType=freeform`, options);
 
-    if (!response.ok) {
-    const message = `An error has occured: ${response.status}`;
-    throw new Error(message);
-    }
+if (!response.ok) {
+const message = `An error has occured: ${response.status}`;
+throw new Error(message);
+}
 
-    englishResult = await response.text();
-    console.log("server response: ");
-    console.log(englishResult);
+englishResult = await response.text();
+console.log("server response: ");
+console.log(englishResult);
 
-    displayIsEnglish = true;
-    console.log("********* finished generating english text ********* ");
+displayIsEnglish = true;
+console.log("********* finished generating english text ********* ");
 
-    translateGPT(englishResult);
+translateGPT(englishResult);
 }
 </script>

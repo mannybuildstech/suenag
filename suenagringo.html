@@ -22,7 +22,7 @@
         grid-template-rows: auto;
         row-gap: 5%;
         column-gap: 5%;
-        width: 80%;
+        width: 95%;
         text-align: center;
         margin: auto;
     }
@@ -45,8 +45,12 @@
     }
 
     #idCustomSub{
-        font-weight: normal;
+        font-weight: bold;
         font-size: 24px;
+        text-align: center;
+        font-family: "inconsolata";
+        color: #524845;
+        padding-bottom: 10px;
     }
  
        
@@ -78,11 +82,11 @@
     font-size: 24px;
     color: #524845;
     text-align: center;
-    height: 3rem;
+    height: 4rem;
     border-color: blueviolet;
-    min-width: fit-content;
-    padding-left: 10px;
-    padding-right: 10px;
+    width: 100%;
+    appearance: none;
+    border-width: 2px;
     
     }
 
@@ -97,17 +101,12 @@
     }
     </style>
    
-   
-    <div id="idCustomSub">Que quieres decir?</div>  
+    <textarea rows="15" id="inputTextArea" name="inputTextArea" placeholder="Que quieres decir? Ejemplo: Hola George, necesitamos que traigan el tractor este viernes."></textarea>
     <br/>
-    <textarea rows="10" id="inputTextArea" name="inputTextArea" placeholder="Ejemplo: Hola George, necesitamos que traigan el tractor este viernes."></textarea>
-    <br/>
-    <br/>
-    <div id="idCustomSub">Personaliza el formato y estilo:</div>    
-    <br/>
+    <p id="idCustomSub">Dale personalidad 👇</p>
     <div id="myGrid">
         <select name="formato" id="idFormatoSection">
-            <option hidden value="email">Tipo de mensaje</option>
+            <option hidden value="email">📧Formato✍️</option>
             <option value="text message">texto📱</option>
             <option value="email">email📧</option>
             <option value="short poem">poema✍️</option>
@@ -117,26 +116,34 @@
             <option value="blog post">articulo📖</option>
         </select>
         <select name="vibra" id="idVibra" rows="1">
-            <option hidden value="formal"> Con que tono? </option>
-            <option value="formal">formal💼</option>
-            <option value="casual">casual🤗</option>
-            <option value="urgent">urgente🚨</option>
+            <option hidden value="formal">💼Tono😂</option>
             <option value="hilarious">gracioso😂</option>
+            <option value="emotional">emocional😭</option>
             <option value="romantic">romantico💑</option>
             <option value="sarcastic">sarcástico😏</option>
             <option value="defiant">desafiante👊</option>
+            <option value="casual">casual🤗</option>
+            <option value="formal">formal💼</option>
+            <option value="informative">informativo📰</option>
+            <option value="urgent">urgente🚨</option>
+            <option value="inspirational">inspirador🙌</option>
+            <option value="catchy">atrapante🎵</option>
         </select>
-        
         <select name="relacion" id="idRelationshipSection" rows="1">
-        <option hidden value="friend"> Para quien? </option>
-        <option value="employee">👷empleado</option>
-        <option value="client">🤝cliente</option>
-        <option value="boss">💼jefe</option>
-        <option value="student">alumno🎓</option>
-        <option value="professor">🏫profe</option>
-        <option value="friend">🤗amigo</option>
-        <option value="love interest">💑amor</option>
+        <option hidden value="friend">👷Para quien?🤝</option>
+        <option value="boss">mi jefe💼</option>
+        <option value="employee">mi empleado👷</option>
+        <option value="colleague">mi colega👨‍💼</option>
+        <option value="client">mi cliente🤝</option>
+        <option value="student">mi alumno🎓</option>
+        <option value="professor">mi profe🏫</option>
+        <option value="friend">mi amigo🤗</option>
+        <option value="family">mi familia👨‍👩‍👧‍👦</option>
+        <option value="love interest">mi amor💑</option>
+        <option value="followers">mis seguidores🐦</option>
+        <option value="enemy">mi enemigo👊</option>
         </select>
     </div>
+    
     </form>
     
