@@ -16,6 +16,11 @@ var ultraPlan = false;
 
 var trialExpired = false;
 
+var toneText;
+var formatText;
+var relationshipText;
+
+
 window.onpopstate = function(event) {
 SetLoadingState()
 };
@@ -147,8 +152,10 @@ document.getElementById("doneMenu").style.opacity = '0'
 document.getElementById("spinner").style.display = "block";
 //output
 //TODO - make this more interesting, either the types, or random english education...
+//document.getElementById("output").innerHTML = "Generando " + formatText + " con tono " + toneText + " para tu" + relationshipText + "...";
 document.getElementById("output").innerHTML = "Generando sugerencias...";
 }
+
 
 function loadInputValues()
 {
@@ -157,18 +164,21 @@ toneOption = document.getElementById("idVibra");
 if (toneOption)
 {
 tone = toneOption.value;
+toneText = toneOption.options[toneOption.selectedIndex].text;
 }
 
 formatOption = document.getElementById(selectionElementId);
 if (formatOption)
 {
 format = formatOption.value;
+formatText = formatOption.options[formatOption.selectedIndex].text;
 }
 
 relationshipOption = document.getElementById("idRelationshipSection");
 if (relationshipOption)
 {
 relationship = relationshipOption.value;
+relationshipText = relationshipOption.options[relationshipOption.selectedIndex].text;
 }
 
 console.log("tone: " + tone);
