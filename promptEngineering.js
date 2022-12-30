@@ -62,12 +62,17 @@ console.log("updateMemberSpaceValues finished");
 function goBack()
 {
 history.back()
-//ga('send', 'event', 'userInput', 'goBack');
+
+mixpanel.track('GoBack', {
+  'source': "suenagringo",
+  });
 }
 
 function scanDocument()
 {
-//ga('send', 'event', 'userInput', 'scanDocument');
+mixpanel.track('ScanDocument', {
+    'source': "suenagringo",
+    });
 }
 
 function copy()
@@ -76,12 +81,18 @@ var result = document.getElementById("output").innerHTML;
 navigator.clipboard.writeText(result);
 console.log("copy() called");
 
-//ga('send', 'event', 'userInput', 'copy');
+mixpanel.track('Copy', {
+  'source': "suenagringo",
+  });
+
 }
 
 function flipLanguage()
 {
-//ga('send', 'event', 'userInput', 'flipLanguage');
+mixpanel.track('FlipLanguage', {
+  'source': "suenagringo",
+  });
+
 if (displayIsEnglish)
 {
 document.getElementById("output").innerHTML = spanishResult;
@@ -187,9 +198,27 @@ console.log("tone: " + tone);
 console.log("format: " + format);
 console.log("relationship: " + relationship);
 
-//ga('send', 'event', 'userInput', 'tone', eventValue: tone);
-//ga('send', 'event', 'userInput', 'format', eventValue: format);
-//ga('send', 'event', 'userInput', 'recipientType', eventValue: relationship);
+memberEmailSpan = document.getElementById("memberEmail");
+memberEmail = "";
+console.log("memberEmail: " + memberEmailSpan);
+if (memberEmailSpan)
+{
+memberEmail = memberEmailSpan.value;
+console.log("memberEmail: " + memberEmail);
+}
+else
+{
+  console.log("memberEmail not found");
+}
+
+mixpanel.track('Text Generation', {
+  'source': "suenagringo",
+  'tone': tone,
+  'format': format,
+  'recipientType': relationship,
+  'memberEmail': memberEmail,
+});
+
 }
 
 //TODO navigate to sections yourself! rather than counting on the CARRD one....
