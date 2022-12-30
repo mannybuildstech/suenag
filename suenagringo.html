@@ -102,7 +102,12 @@
     }
     </style>
     
-    <textarea rows="15" id="inputTextArea" name="inputTextArea" placeholder="Que quieres decir? Ejemplo: Hola George, necesitamos que traigan el tractor este viernes."></textarea>
+    <textarea rows="15" id="inputTextArea" name="inputTextArea" placeholder="Que quieres decir? Ejemplo: Hola George, necesitamos que traigan el tractor este viernes." autofocus></textarea>
+    <script>
+        var inputTextArea = document.getElementById("inputTextArea");
+        //set focus
+        inputTextArea.focus();
+    </script>
     <br/>
     <p id="idCustomSub">Dale personalidad 👇</p>
     

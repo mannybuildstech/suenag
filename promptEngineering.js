@@ -25,6 +25,10 @@ window.onpopstate = function(event) {
 SetLoadingState()
 };
 
+//set focus to input box on load
+window.onload = function() {
+document.getElementById("inputTextArea").focus();
+};
 
 var selectionElementId = "freeSelection";
 
