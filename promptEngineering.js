@@ -20,7 +20,6 @@ var toneText;
 var formatText;
 var relationshipText;
 
-
 window.onpopstate = function(event) {
 SetLoadingState()
 };
@@ -34,30 +33,30 @@ var selectionElementId = "freeSelection";
 
 function updateMemberSpaceValues()
 {
-  console.log("updateMemberSpaceValues called");
-  if (!freePlan && !basicPlan && !ultraPlan)
-  {
-    console.log("no plan available!");
-    //open url in same tab
-    trialExpired = true;
-    window.location.href = "https://wisetools1.memberspace.com/member/sign_in";
-  }
-  else
-  {
-    console.log("freePlan: " + freePlan);
-    console.log("basicPlan: " + basicPlan);
-    console.log("ultraPlan: " + ultraPlan);
+console.log("updateMemberSpaceValues called");
+if (!freePlan && !basicPlan && !ultraPlan)
+{
+console.log("no plan available!");
+//open url in same tab
+trialExpired = true;
+window.location.href = "https://wisetools1.memberspace.com/member/sign_in";
+}
+else
+{
+console.log("freePlan: " + freePlan);
+console.log("basicPlan: " + basicPlan);
+console.log("ultraPlan: " + ultraPlan);
 
-    if (freePlan)
-      selectionElementId = "freeSelection";
-    else if (basicPlan)
-      selectionElementId = "basicSelection";
-    else if (ultraPlan)
-      selectionElementId = "ultraSelection";
-    
-    console.log("grabbing data from select element: " + selectionElementId);
-  }
-  console.log("updateMemberSpaceValues finished");
+if (freePlan)
+selectionElementId = "freeSelection";
+else if (basicPlan)
+selectionElementId = "basicSelection";
+else if (ultraPlan)
+selectionElementId = "ultraSelection";
+
+console.log("grabbing data from select element: " + selectionElementId);
+}
+console.log("updateMemberSpaceValues finished");
 }
 
 function goBack()
@@ -160,7 +159,6 @@ document.getElementById("spinner").style.display = "block";
 document.getElementById("output").innerHTML = "Generando sugerencias...";
 }
 
-
 function loadInputValues()
 {
 
@@ -194,15 +192,14 @@ console.log("relationship: " + relationship);
 //ga('send', 'event', 'userInput', 'recipientType', eventValue: relationship);
 }
 
-
 //TODO navigate to sections yourself! rather than counting on the CARRD one....
 function expirationBlock()
 {
-    console.log("expired! not letting them use the system");
-    //send them to account page
-    window.location.href = "https://wisetools1.memberspace.com/member/sign_in";
-    var result = document.getElementById("output").innerHTML = "Su plan ha expirado. Actualice su plan entrando a su 'Cuenta' para continuar usando el sistema.";
-    return;
+console.log("expired! not letting them use the system");
+//send them to account page
+window.location.href = "https://wisetools1.memberspace.com/member/sign_in";
+var result = document.getElementById("output").innerHTML = "Su plan ha expirado. Actualice su plan entrando a su 'Cuenta' para continuar usando el sistema.";
+return;
 }
 
 async function callGPT()
@@ -211,8 +208,8 @@ async function callGPT()
 updateMemberSpaceValues();
 if (trialExpired)
 {
-  expirationBlock();
-  return;
+expirationBlock();
+return;
 }
 
 loadInputValues();

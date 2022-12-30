@@ -102,7 +102,7 @@
     }
     </style>
     
-    <textarea rows="15" id="inputTextArea" name="inputTextArea" placeholder="Que quieres decir? Ejemplo: Hola George, necesitamos que traigan el tractor este viernes." autofocus></textarea>
+    <textarea inputmode="text" rows="15" id="inputTextArea" name="inputTextArea" placeholder="Que quieres decir? Ejemplo: Hola George, necesitamos que traigan el tractor este viernes." autofocus></textarea>
     <script>
         var inputTextArea = document.getElementById("inputTextArea");
         //set focus
@@ -124,6 +124,7 @@
             <option value="blog post">articulo📖</option>
             <option value="speech">discurso🎤</option>
             <option value="outline">esquema📝</option>
+            <option value="sales spitch">pitch de ventas📣</option>
             <script>
 
                 document.getElementById('freeSelection').addEventListener("change", handleClickFree);
