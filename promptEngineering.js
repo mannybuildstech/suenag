@@ -20,6 +20,8 @@ var toneText;
 var formatText;
 var relationshipText;
 
+var globalMemberEmail="";
+
 window.onpopstate = function(event) {
 SetLoadingState()
 };
@@ -63,16 +65,19 @@ function goBack()
 {
 history.back()
 
-mixpanel.track('GoBack', {
-  'source': "suenagringo",
-  });
+mixpanel.track('goBack', {
+'source': "suenagringo",
+'memberEmail': globalMemberEmail
+});
 }
 
 function scanDocument()
 {
-mixpanel.track('ScanDocument', {
-    'source': "suenagringo",
-    });
+mixpanel.track('scanDocument', {
+'source': "suenagringo",
+'memberEmail': globalMemberEmail
+});
+
 }
 
 function copy()
@@ -81,18 +86,19 @@ var result = document.getElementById("output").innerHTML;
 navigator.clipboard.writeText(result);
 console.log("copy() called");
 
-mixpanel.track('Copy', {
-  'source': "suenagringo",
-  });
-
+mixpanel.track('copy', {
+'source': "suenagringo",
+'memberEmail': globalMemberEmail
+});
 }
 
 function flipLanguage()
 {
-mixpanel.track('FlipLanguage', {
-  'source': "suenagringo",
-  });
 
+mixpanel.track('flipLanguage', {
+'source': "suenagringo",
+'memberEmail': globalMemberEmail
+});
 if (displayIsEnglish)
 {
 document.getElementById("output").innerHTML = spanishResult;
@@ -199,29 +205,18 @@ console.log("format: " + format);
 console.log("relationship: " + relationship);
 
 memberEmailSpan = document.getElementById("memberEmail");
-memberEmail = "";
-console.log("memberEmail: " + memberEmailSpan);
-if (memberEmailSpan)
-{
-memberEmail = memberEmailSpan.value;
-console.log("memberEmail: " + memberEmail);
-}
-else
-{
-  console.log("memberEmail not found");
-}
+globalMemberEmail = memberEmailSpan.value;
 
 mixpanel.track('Text Generation', {
-  'source': "suenagringo",
-  'tone': tone,
-  'format': format,
-  'recipientType': relationship,
-  'memberEmail': memberEmail,
+'source': "suenagringo",
+'tone': tone,
+'format': format,
+'recipientType': relationship,
+'memberEmail': globalMemberEmail
 });
 
 }
 
-//TODO navigate to sections yourself! rather than counting on the CARRD one....
 function expirationBlock()
 {
 console.log("expired! not letting them use the system");
@@ -233,13 +228,6 @@ return;
 
 async function callGPT()
 {
-
-updateMemberSpaceValues();
-if (trialExpired)
-{
-expirationBlock();
-return;
-}
 
 loadInputValues();
 SetLoadingState();

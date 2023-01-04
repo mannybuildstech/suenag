@@ -1,222 +1,257 @@
-<span id="freePlan" data-ms-show="plan(qqoioj3cqf)" style="opacity:0;">free</span>
-  <span id="basicPlan" data-ms-show="plan(gyjzbuabgg)" style="opacity:0;">basic</span>
-  <span id="ultraPlan" data-ms-show="plan(fszhok0aa5)" style="opacity:0;">ultra</span>
-  <span id="memberEmail" data-ms-member-info="email" style="opacity:0;"></span>
-<form id="myForm">
-    <style>
+<span id="memberEmail" data-ms-member-info="email" style="opacity:0;"></span>
+<form id="myForm" data-ms-show="plan(qqoioj3cqf,gyjzbuabgg,fszhok0aa5)">
 
-    .parent{
-        overflow:hidden
-    }
+<style>
 
-    body{
-    font-family: "inconsolata";
-    }
-    
-    form {
-        
-        font-size: 24px;
-        font-family: "inconsolata";
-        font-weight: bold;
-    }
+.parent{
+overflow:hidden
+}
 
-    #myGrid{
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        row-gap: 5%;
-        column-gap: 5%;
-        width: 100%;
-        text-align: center;
-        margin: auto;
-    }
+body{
+font-family: "inconsolata";
+}
 
-    #inputTextArea{     
-    font-family: "inconsolata";
-    border-radius: 8px;
-    font-size: 24px;
-    color: #524845;
-    text-align: left;
-    border-color: blueviolet;
-    column-count: 3;
-    width: 100%;
-    }
+form {
 
+font-size: 24px;
+font-family: "inconsolata";
+font-weight: bold;
+}
 
-    #idCustomize{
-    }
+#freePlan
+{
+font-size: 8px;
+}
+#basicPlan
+{
+font-size: 8px;
+}
+#ultraPlan
+{
+font-size: 8px;
+}
 
-    #idCustomSub{
-        font-weight: bold;
-        font-size: 24px;
-        text-align: center;
-        font-family: "inconsolata";
-        color: #524845;
-        padding-bottom: 10px;
-    }
- 
-       
-    #idRelationshipSection {
-    grid-column: 1;
-    grid-row: 3;
-    margin:auto;
-    text-align: center;    
-    }
+#myGrid{
+display: grid;
+grid-template-columns: 1fr;
+grid-template-rows: auto;
+row-gap: 5%;
+column-gap: 5%;
+width: 100%;
+text-align: center;
+margin: auto;
+}
 
-    .idFormatoSection {
-    grid-column: 1;
-    grid-row: 1;
-    margin:auto;
-    text-align: center;
-    }
+#inputTextArea{
+font-family: "inconsolata";
+border-radius: 8px;
+font-size: 24px;
+color: #524845;
+text-align: left;
+border-color: blueviolet;
+column-count: 3;
+width: 100%;
+}
 
-    #idVibra {
-    grid-column: 1;
-    grid-row: 2;
-    margin:auto;
-    text-align: center;    
-    }
- 
-        
-    select{
-    font-family: "inconsolata";
-    border-radius: 8px;
-    font-size: 24px;
-    color: #524845;
-    text-align: center;
-    height: 4rem;
-    border-color: blueviolet;
-    width: 100%;
-    appearance: none;
-    border-width: 2px;
-    
-    }
+#idCustomize{
+}
 
-    
-    option{
-    font-family: "inconsolata";
-    font-size: 24px;
-    color: #524845;
-    height: 1rem;
-    text-align: center;
-    height: 3rem;
-    }
-    </style>
-    
-    <textarea inputmode="text" rows="15" id="inputTextArea" name="inputTextArea" placeholder="Que quieres decir? Ejemplo: Hola George, necesitamos que traigan el tractor este viernes." autofocus></textarea>
-    <script>
-        var inputTextArea = document.getElementById("inputTextArea");
-        //set focus
-        inputTextArea.focus();
-    </script>
-    <br/>
-    <p id="idCustomSub">Dale personalidad 👇</p>
-    
-    <div id="myGrid">
-        <!--------------------------------------------------------------- gratis -------------------------------------------->
-        <select name="formato" id="freeSelection" class="idFormatoSection" data-ms-show="plan(qqoioj3cqf)">
-            <option hidden value="email">📧Formato✍️</option>
-            <option value="text message">texto📱</option>
-            <option value="email">email📧</option>
-            <option value="short poem">poema✍️</option>
-            <option value="tweet">tweet🐦</option>
-            <option value="catchy and persuasive ad">publicidad📰</option>
-            <option value="slogan">eslogan🔖</option>
-            <option value="blog post">articulo📖</option>
-            <option value="speech">discurso🎤</option>
-            <option value="outline">esquema📝</option>
-            <option value="sales spitch">pitch de ventas📣</option>
-            <script>
+#idCustomSub{
+font-weight: bold;
+font-size: 24px;
+text-align: center;
+font-family: "inconsolata";
+color: #524845;
+padding-bottom: 10px;
+}
 
-                document.getElementById('freeSelection').addEventListener("change", handleClickFree);
+#idRelationshipSection {
+grid-column: 1;
+grid-row: 3;
+margin:auto;
+text-align: center;
+}
 
-                function handleClickFree()
-                {
-                    console.log("clicked FREE!")
-                    freePlan = true;
-                }
-            </script>
-        </select>
-        <!--------------------------------------------------------------- basic -------------------------------------------->
-        <select name="formato" id="basicSelection" class="idFormatoSection" data-ms-show="plan(gyjzbuabgg)">
-            <option hidden value="email">📧Formato✍️</option>
-            <option value="text message">texto📱</option>
-            <option value="email">email📧</option>
-            <option value="short poem">poema✍️</option>
-            <option value="tweet">tweet🐦</option>
-            <option value="catchy and persuasive ad">publicidad📰</option>
-            <option value="slogan" disabled>eslogan🔖</option>
-            <option value="blog post" disabled>articulo📖</option>
-            <option value="speech" disabled>discurso🎤</option>
-            <option value="outline" disabled>esquema📝</option>
-            <script>
-                
-                document.getElementById('basicSelection').addEventListener("change", handleClickBasic);
+.visibleOnAuth (
+display: block;
+)
 
-                function handleClickBasic()
-                {
-                    console.log("clicked BASIC!")
-                    basicPlan = true;
-                }
-            </script>
-        </select>
-        <!--------------------------------------------------------------- ultra -------------------------------------------->
-        
-        <select name="formato" id="ultraSelection" class="idFormatoSection" data-ms-show="plan(fszhok0aa5)"">
-            <option hidden value="email">📧Formato✍️</option>
-            <option value="text message">texto📱</option>
-            <option value="email">email📧</option>
-            <option value="short poem">poema✍️</option>
-            <option value="tweet">tweet🐦</option>
-            <option value="catchy and persuasive ad">publicidad📰</option>
-            <option value="slogan">eslogan🔖</option>
-            <option value="blog post">articulo📖</option>
-            <option value="speech">discurso🎤</option>
-            <option value="outline">esquema📝</option>
-            <script>
-                
-                document.getElementById('ultraSelection').addEventListener("change", handleClickFree);
+.idFormatoSection {
+grid-column: 1;
+grid-row: 1;
+margin:auto;
+text-align: center;
+}
 
-                function handleClickFree()
-                {
-                    console.log("clicked ULTRA!")
-                    ultraPlan = true;
-                }
-            </script>
-        </select>
+#idVibra {
+grid-column: 1;
+grid-row: 2;
+margin:auto;
+text-align: center;
+}
 
+select{
+font-family: "inconsolata";
+border-radius: 8px;
+font-size: 24px;
+color: #524845;
+text-align: center;
+height: 4rem;
+border-color: blueviolet;
+width: 100%;
+appearance: none;
+border-width: 2px;
 
-        <select name="vibra" id="idVibra" rows="1">
-            <option hidden value="formal">💼Tono😂</option>
-            <option value="formal">formal💼</option>
-            <option value="urgent">urgente🚨</option>
-            <option value="casual">casual🤗</option>
-            <option value="hilarious">gracioso😂</option>
-            <option value="emotional">emocional😭</option>
-            <option value="romantic">romantico💑</option>
-            <option value="sarcastic">sarcástico😏</option>
-            <option value="defiant">desafiante👊</option>
-            <option value="inspirational">inspirador🙌</option>
-            <option value="informative">informativo📰</option>
-            <option value="catchy">atrapante🎵</option>
-        </select>
-        <select name="relacion" id="idRelationshipSection" rows="1">
-        <option hidden value="friend">👷Para quien?🤝</option>
-        <option value="boss">jefe💼</option>
-        <option value="employee">empleado👷</option>
-        <option value="colleague">colega👨‍💼</option>
-        <option value="client">cliente🤝</option>
-        <option value="followers">seguidores🐦</option>
-        <option value="student">alumno🎓</option>
-        <option value="professor">profe🏫</option>
-        <option value="friend">amigo🤗</option>
-        <option value="enemy">enemigo👊</option> 
-        <option value="family">familia👨‍👩‍👧‍👦</option>
-        <option value="love interest">amor💑</option>
-        </select>
-        <script>
-        </script>
-    </div>
-    
-    </form>
-    
+}
+
+option{
+font-family: "inconsolata";
+font-size: 24px;
+color: #524845;
+height: 1rem;
+text-align: center;
+height: 3rem;
+}
+</style>
+
+<textarea inputmode="text" rows="15" id="inputTextArea" name="inputTextArea" placeholder="Que quieres decir? Ejemplo: Hola George, necesitamos que traigan el tractor este viernes." autofocus></textarea>
+<script>
+var inputTextArea = document.getElementById("inputTextArea");
+//set focus
+inputTextArea.focus();
+</script>
+<br/>
+<p id="idCustomSub">Dale personalidad 👇</p>
+
+<div id="myGrid">
+<!--------------------------------------------------------------- gratis -------------------------------------------->
+<select name="formato" id="freeSelection" class="idFormatoSection" data-ms-show="plan(qqoioj3cqf)">
+<option hidden value="email">📧Formato✍️</option>
+<option value="text message">texto📱</option>
+<option value="email">email📧</option>
+<option value="short poem">poema✍️</option>
+<option value="tweet">tweet🐦</option>
+<option value="catchy and persuasive ad">publicidad📰</option>
+<option value="slogan">eslogan🔖</option>
+<option value="blog post">articulo📖</option>
+<option value="speech">discurso🎤</option>
+<option value="outline">esquema📝</option>
+<option value="sales spitch">pitch de ventas📣</option>
+<script>
+
+const element = document.querySelector('#freeSelection');
+
+const observer = new MutationObserver(mutations => {
+mutations.forEach(mutation => {
+if (mutation.attributeName === 'style') {
+const display = window.getComputedStyle(element).getPropertyValue('display');
+console.log(`The display value is ${display}`);
+}
+});
+});
+
+observer.observe(element, { attributes: true });
+
+document.getElementById('freeSelection').addEventListener("change", handleClickFree);
+
+function handleClickFree()
+{
+console.log("clicked FREE!")
+freePlan = true;
+}
+</script>
+</select>
+<!--------------------------------------------------------------- basic -------------------------------------------->
+<select name="formato" id="basicSelection" class="idFormatoSection" data-ms-show="plan(gyjzbuabgg)">
+<option hidden value="email">📧Formato✍️</option>
+<option value="text message">texto📱</option>
+<option value="email">email📧</option>
+<option value="short poem">poema✍️</option>
+<option value="tweet">tweet🐦</option>
+<option value="catchy and persuasive ad">publicidad📰</option>
+<option value="slogan" disabled>eslogan🔖</option>
+<option value="blog post" disabled>articulo📖</option>
+<option value="speech" disabled>discurso🎤</option>
+<option value="outline" disabled>esquema📝</option>
+<script>
+
+document.getElementById('basicSelection').addEventListener("change", handleClickBasic);
+
+function handleClickBasic()
+{
+console.log("clicked BASIC!")
+basicPlan = true;
+}
+</script>
+</select>
+<!--------------------------------------------------------------- ultra -------------------------------------------->
+
+<select name="formato" id="ultraSelection" class="idFormatoSection" data-ms-show="plan(fszhok0aa5)"">
+<option hidden value="email">📧Formato✍️</option>
+<option value="text message">texto📱</option>
+<option value="email">email📧</option>
+<option value="short poem">poema✍️</option>
+<option value="tweet">tweet🐦</option>
+<option value="catchy and persuasive ad">publicidad📰</option>
+<option value="slogan">eslogan🔖</option>
+<option value="blog post">articulo📖</option>
+<option value="speech">discurso🎤</option>
+<option value="outline">esquema📝</option>
+<script>
+
+document.getElementById('ultraSelection').addEventListener("change", handleClickFree);
+
+function handleClickFree()
+{
+console.log("clicked ULTRA!")
+ultraPlan = true;
+}
+</script>
+</select>
+
+<select name="vibra" id="idVibra" rows="1">
+<option hidden value="formal">💼Tono😂</option>
+<option value="formal">formal💼</option>
+<option value="urgent">urgente🚨</option>
+<option value="casual">casual🤗</option>
+<option value="hilarious">gracioso😂</option>
+<option value="emotional">emocional😭</option>
+<option value="romantic">romantico💑</option>
+<option value="sarcastic">sarcástico😏</option>
+<option value="defiant">desafiante👊</option>
+<option value="inspirational">inspirador🙌</option>
+<option value="informative">informativo📰</option>
+<option value="catchy">atrapante🎵</option>
+</select>
+<select name="relacion" id="idRelationshipSection" rows="1">
+<option hidden value="friend">👷Para quien?🤝</option>
+<option value="boss">jefe💼</option>
+<option value="employee">empleado👷</option>
+<option value="colleague">colega👨💼</option>
+<option value="client">cliente🤝</option>
+<option value="followers">seguidores🐦</option>
+<option value="student">alumno🎓</option>
+<option value="professor">profe🏫</option>
+<option value="friend">amigo🤗</option>
+<option value="enemy">enemigo👊</option>
+<option value="family">familia👨👩👧👦</option>
+<option value="love interest">amor💑</option>
+</select>
+<script>
+</script>
+</div>
+
+</form>
+
+<script>
+//log if freePlan element is displayed
+var freePlan = document.getElementById("freePlan");
+var basicPlan = document.getElementById("basicPlan");
+var ultraPlan = document.getElementById("ultraPlan");
+
+//log to console
+console.log("my test")
+console.log("freePlan available: " + window.getComputedStyle(freePlan, null).getPropertyValue("display"));
+console.log("basicPlan available: " + window.getComputedStyle(basicPlan, null).getPropertyValue("display"));
+console.log("ultraPlan available: " + window.getComputedStyle(ultraPlan, null).getPropertyValue("display"));
+</script>
